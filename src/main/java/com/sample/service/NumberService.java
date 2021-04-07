@@ -20,9 +20,17 @@ public class NumberService {
 		public void addNumbers(Numbers numbers) {
 			
 			String number = numbers.getNumber();
-	        String regex = "\\d+";
+			//String withoutspaces = str.replaceAll("\\s",""); // we can use this singleline code also
+
+			String withoutspaces = " ";
+			for (int i = 0; i < number.length(); i++) {
+		        if (number.charAt(i) != ' ')
+		            withoutspaces += number.charAt(i);
+		    } 
+			
+			String regex = "\\d+";
 	        Pattern p = Pattern.compile(regex);
-	        Matcher m = p.matcher(number);
+	        Matcher m = p.matcher(withoutspaces);
 	        long MAX = 0;
 	        while(m.find())
 	        {
